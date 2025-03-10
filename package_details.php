@@ -1,5 +1,27 @@
-<?php include 'include/navbar.php'; ?>
+<?php include 'navbar.php'; ?>
+<?php
+include 'connection.php';
 
+$p_id = isset($_GET['p_id']) ? intval($_GET['p_id']) : 0;
+
+if ($p_id > 0) {
+    // Fetch package details
+    $query = "SELECT p_id, p_name, p_duration, p_price, p_description, image 
+              FROM packages 
+              WHERE p_id = $p_id";
+    $result = $con->query($query);
+
+    if ($result->num_rows > 0) {
+        $package = $result->fetch_assoc();
+    } else {
+        echo "<p>Package not found.</p>";
+        exit;
+    }
+} else {
+    echo "<p>Invalid package selection.</p>";
+    exit;
+}
+?>
 
 
 <!DOCTYPE html>
@@ -29,7 +51,7 @@
 
         .package-image img {
             width: 100%;
-            height: 250px;
+            height: 350px;
             object-fit: cover;
         }
 
@@ -136,14 +158,14 @@
             <div class="col-md-8">
                 <div class="package-card">
                     <div class="package-image">
-                        <img src="Image/pg1.jpg" alt="Package Image">
+                    <img src="image/<?= htmlspecialchars($package['image']) ?>" alt="Package Image">
                     </div>
                     <div class="package-details">
-                        <h3>Dooars 4 Nights | 5 Days</h3>
+                        <h3><?= htmlspecialchars($package['p_name']) ?> - <?= htmlspecialchars($package['p_duration']) ?></h3>
                         <p><strong>Package ID:</strong> DR001</p>
                         <p><i class="fas fa-map-marker-alt"></i> Lataguri → Murti → Jaldapara → Buxa</p>
                         <p><strong>Package Type:</strong> Wildlife & Nature Tour</p>
-                        <p><strong>Package Cost:</strong> Rs. 8,500 / Per Head</p>
+                        <p><strong>Package Cost:</strong> Rs.<?= number_format($package['p_price'], 2) ?> / Per Head</p>
                         <h5>Itinerary:</h5>
                         <div class="day-box">
                             <i class="fas fa-calendar-day day-icon"></i>

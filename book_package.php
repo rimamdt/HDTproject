@@ -1,4 +1,20 @@
-<?php include 'include/navbar.php'; ?>
+<?php
+include 'navbar.php';
+include 'connection.php';
+// Database connection
+$place_id = isset($_GET['place_id']) ? intval($_GET['place_id']) : 0;
+
+if ($place_id > 0) {
+    // Fetch packages for the selected place
+    $query = "SELECT p_id, p_name, p_duration, p_price, p_description, image 
+              FROM packages 
+              WHERE place_id = $place_id";
+    $result = $con->query($query);
+} else {
+    echo "<p>No place selected.</p>";
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +25,98 @@
     <title>Tour Package</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <div class="bcontainer">
+        <!-- Left Section: Tour package_details -->
+        <div class="btour-package_details">
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) { ?>
+                <div class="bpackage-card">
+                    <div class="bimage-container">
+                        <img src="image/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['p_name']) ?>" class="package-image">
+                        <span class="bbadge"><?= htmlspecialchars($row['p_duration']) ?></span>
+                    </div>
+                    <div class="bpackage-details">
+                        <h3><?= htmlspecialchars($row['p_name']) ?></h3>
+                        <p><i class="fa fa-id-card"></i> PACKAGE ID: DOR002</p>
+                        <p><i class="fa fa-map-marker-alt"></i><?= htmlspecialchars($row['p_description']) ?></p>
+                        <div class="bicons">
+                            <i class="fa fa-plane"></i>
+                            <i class="fa fa-car"></i>
+                            <i class="fa fa-hotel"></i>
+                        </div>
+                        <a href="booking.php">
+                            <button class="bbook-now">BOOK NOW</button>
+                        </a>
+                        <a href="package_details.php?p_id=<?= $row['p_id'] ?>">
+                            <button class="bdetails-btn">DETAILS</button>
+                        </a>
+
+                        <i class="fa fa-exchange-alt exchange-icon"></i>
+                    </div>
+                </div>
+            <?php } ?>
+
+        </div>
+
+        <!-- Related package_details -->
+        <div class="related-package_details">
+            <h4>Related package </h4>
+            <?php
+
+            $query = "SELECT p_id, p_name, p_duration, p_price, p_description, image FROM packages";
+            $res = $con->query($query);
+            while ($row = mysqli_fetch_assoc($res)) { ?>
+
+                <div class="package">
+                    <img src="image/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['p_name']) ?>">
+                    <div class="package-details">
+                        <p><?= htmlspecialchars($row['p_description']) ?></p>
+                        <a href="package_details.php?p_id=<?= $row['p_id'] ?>" class="btn-sm">View Details</a>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+
+        </div>
+    </div>
+    <!-- Places to Visit Section -->
+    <section class="places-to-visit">
+        <h2>PLACES TO VISIT</h2>
+        <div class="places-grid">
+            <div class="place-card">
+                <img src="image/top1.jpg" alt="Mahananda">
+                <div class="place-name">Mahananda</div>
+            </div>
+            <div class="place-card">
+                <img src="image/top2.jpg" alt="Chapramari">
+                <div class="place-name">Chapramari</div>
+            </div>
+            <div class="place-card">
+                <img src="image/toto.jpg" alt="Suntalekhola">
+                <div class="place-name">Suntalekhola</div>
+            </div>
+            <div class="place-card">
+                <img src="image/top3.jpg" alt="Buxa">
+                <div class="place-name">Buxa</div>
+            </div>
+            <div class="place-card">
+                <img src="image/riv.jpg" alt="Pasakha">
+                <div class="place-name">Pasakha</div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <?php include 'include/footer.php'; ?>
+
+
 
     <style>
         .bcontainer {
@@ -172,183 +280,67 @@
             font-family: system-ui;
             font-style: italic;
         }
-            .places-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-                justify-content: center;
-                padding: 10px;
-            }
 
-            .place-card {
-                position: relative;
-                overflow: hidden;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            justify-content: center;
+            padding: 10px;
+        }
 
-            .place-card img {
-                width: 100%;
-                height: 180px;
-                object-fit: cover;
-                display: block;
-                transition: transform 0.3s ease;
-            }
+        .place-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-            .place-card:hover img {
-                transform: scale(1.1);
-            }
+        .place-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
 
-            .place-name {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                background: rgba(0, 86, 179, 0.8);
-                color: white;
-                text-align: center;
-                padding: 10px 0;
-                font-size: 16px;
-                transition: background 0.3s ease;
-            }
+        .place-card:hover img {
+            transform: scale(1.1);
+        }
 
-            .place-card:hover .place-name {
-                background: rgba(0, 86, 179, 1);
-            }
+        .place-name {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 86, 179, 0.8);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
 
-            .bdetails-btn {
-                background: olive;
-                color: white;
-                padding: 9px 14px;
-                border: none;
-                cursor: pointer;
-                font-size: 12px;
-                margin-top: 2px;
-                border-radius: 4px;
-                font-family: 'Poppins', sans-serif;
-                /* Beautiful modern font */
-                margin-top: 10px;
-                border-radius: 5px;
-                transition: background 0.3s ease;
-            }
+        .place-card:hover .place-name {
+            background: rgba(0, 86, 179, 1);
+        }
 
-            .bdetails-btn:hover {
-                background: #0056b3;
-            }
+        .bdetails-btn {
+            background: olive;
+            color: white;
+            padding: 9px 14px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 2px;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            /* Beautiful modern font */
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .bdetails-btn:hover {
+            background: #0056b3;
+        }
     </style>
-
-</head>
-
-<body>
-
-    <div class="bcontainer">
-        <!-- Left Section: Tour package_details -->
-        <div class="btour-package_details">
-            <div class="bpackage-card">
-                <div class="bimage-container">
-                    <img src="Image/to1.jpg" alt="Tour Image">
-                    <span class="bbadge">5N | 6D</span>
-                </div>
-                <div class="bpackage-details">
-                    <h3>Dooars 5 Nights | 6 Days</h3>
-                    <p><i class="fa fa-id-card"></i> PACKAGE ID: DOR002</p>
-                    <p><i class="fa fa-map-marker-alt"></i> 2N LATAGURI - 3N JALDAPARA</p>
-                    <div class="bicons">
-                        <i class="fa fa-plane"></i>
-                        <i class="fa fa-car"></i>
-                        <i class="fa fa-hotel"></i>
-                    </div>
-                    <a href="booking.php">
-                        <button class="bbook-now">BOOK NOW</button>
-                    </a>
-                    <a href="package_details.php">
-                        <button class="bdetails-btn">DETAILS</button>
-                    </a>
-
-                    <i class="fa fa-exchange-alt exchange-icon"></i>
-                </div>
-            </div>
-
-            <div class="bpackage-card">
-                <div class="bimage-container">
-                    <img src="Image/top3.jpg" alt="Tour Image">
-                    <span class="bbadge">5N | 6D</span>
-                </div>
-                <div class="bpackage-details">
-                    <h3>Buxa 3 Nights | 8 Days</h3>
-                    <p><i class="fa fa-id-card"></i> PACKAGE ID: DOR002</p>
-                    <p><i class="fa fa-map-marker-alt"></i> 2N LATAGURI - 3N JALDAPARA</p>
-                    <div class="bicons">
-                        <i class="fa fa-plane"></i>
-                        <i class="fa fa-car"></i>
-                        <i class="fa fa-hotel"></i>
-                    </div>
-                    <a href="booking.php">
-                        <button class="bbook-now">BOOK NOW</button>
-                    </a>
-                    <a href="package_details.php">
-                        <button class="bdetails-btn">DETAILS</button>
-                    </a>
-
-                    <i class="fa fa-exchange-alt exchange-icon"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Related package_details -->
-        <div class="related-package_details">
-            <h4>Related package </h4>
-            <div class="package">
-                <img src="Image/top3.jpg" alt="Bhutan Package">
-                <div class="package-details">
-                    <p>Lataguri - Murti - Jaldapara - Buxa - Jayanti</p>
-                    <a href="package_details.php" class="btn-sm">View Details</a>
-                </div>
-            </div>
-            <div class="package">
-                <img src="Image/pg2.jpg" alt="Bhutan Package">
-                <div class="package-details">
-                    <p>Lataguri - Murti - Jaldapara - Buxa - Jayanti</p>
-                    <a href="package_details.php" class="btn-sm">View Details</a>
-                </div>
-            </div>
-            <div class="package">
-                <img src="Image/pg3.jpg" alt="Bhutan Package">
-                <div class="package-details">
-                    <p>Lataguri - Murti - Jaldapara - Buxa - Jayanti</p>
-                    <a href="package_details.php" class="btn-sm">View Details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Places to Visit Section -->
-    <section class="places-to-visit">
-        <h2>PLACES TO VISIT</h2>
-        <div class="places-grid">
-            <div class="place-card">
-                <img src="image/top1.jpg" alt="Mahananda">
-                <div class="place-name">Mahananda</div>
-            </div>
-            <div class="place-card">
-                <img src="image/top2.jpg" alt="Chapramari">
-                <div class="place-name">Chapramari</div>
-            </div>
-            <div class="place-card">
-                <img src="image/toto.jpg" alt="Suntalekhola">
-                <div class="place-name">Suntalekhola</div>
-            </div>
-            <div class="place-card">
-                <img src="image/top3.jpg" alt="Buxa">
-                <div class="place-name">Buxa</div>
-            </div>
-            <div class="place-card">
-                <img src="image/riv.jpg" alt="Pasakha">
-                <div class="place-name">Pasakha</div>
-            </div>
-        </div>
-    </section>
-    </div>
-
-    <?php include 'include/footer.php'; ?>
-</body>
-
-</html>
