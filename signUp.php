@@ -24,7 +24,7 @@ include('connection.php'); // Ensure this is correct
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #E3F2FD; /* Light Blue */
+            background:url('Image/sig.jpg');/* Light Blue */
         }
 
         /* Container */

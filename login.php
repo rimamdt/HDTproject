@@ -16,13 +16,13 @@ if (isset($_POST['login'])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $_SESSION['USER_LOGIN']='yes';
- 
+        $_SESSION['USER_LOGIN'] = 'yes';
+
         $_SESSION['logedin'] = true;
         $_SESSION['uid'] = $row['id'];
         $_SESSION['name'] = $row['Name'];
         $_SESSION['email'] = $row['Email'];
-        
+
 
         echo "<script>window.location.href = 'index.php';</script>";
         exit();
@@ -34,6 +34,7 @@ if (isset($_POST['login'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,14 +55,15 @@ if (isset($_POST['login'])) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #E3F2FD; /* Light Blue */
+            background: url('Image/log4.jpg') no-repeat center center;
+            background-size: cover;
         }
 
         /* Container */
         .container {
             width: 100%;
             max-width: 350px;
-            background: white;
+            background: transparent;
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -72,7 +74,8 @@ if (isset($_POST['login'])) {
         .title {
             font-size: 22px;
             font-weight: bold;
-            color: #00897B; /* Medical Green */
+            color: #00897B;
+            /* Medical Green */
             margin-bottom: 15px;
         }
 
@@ -119,7 +122,7 @@ if (isset($_POST['login'])) {
         .signup-link {
             display: block;
             font-size: 14px;
-            color: #00897B;
+            color:whitesmoke;
             margin-top: 10px;
             text-decoration: none;
         }
@@ -137,6 +140,7 @@ if (isset($_POST['login'])) {
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2 class="title">Login</h2>
@@ -163,4 +167,5 @@ if (isset($_POST['login'])) {
         </form>
     </div>
 </body>
+
 </html>
