@@ -1,0 +1,51 @@
+<div class="fcontainer">
+    <div class="user-list">
+        {% for user in users %}
+            <div class="user-card">
+                <img src="https://cdn-icons-png.flaticon.com/128/201/201634.png" alt="User">
+                <div class="user-info">
+                    <h4>{{ user.username }}</h4>
+                    <p>Followed by {{ user.followers.count }} people</p>
+                </div>
+                <button class="follow-btn" data-user-id="{{ user.id }}">Follow</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- CSRF Token -->
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const followButtons = document.querySelectorAll(".follow-btn");
+    
+        followButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const userId = this.getAttribute("data-user-id");
+                const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+    
+                fetch(`/follow/${userId}/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "followed") {
+                        this.textContent = "Following";
+                        this.classList.add("following");
+                    } else {
+                        this.textContent = "Follow";
+                        this.classList.remove("following");
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        });
+    });
+    </script>
+    
