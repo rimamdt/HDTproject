@@ -1,136 +1,144 @@
+<?php 
+include('connection.php'); // Ensure this is correct
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tourism Registration</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | MedStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('image/reg1.jpg') no-repeat center center/cover;
-            font-family: Arial, sans-serif;
+            background: #E3F2FD; /* Light Blue */
         }
+
+        /* Container */
         .container {
-            background:transparent;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
             width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
+        /* Title */
         .title {
             font-size: 24px;
             font-weight: bold;
+            color: #333;
             margin-bottom: 20px;
         }
-        .form-control {
-            border-radius: 10px;
+
+        /* Input Fields */
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+            text-align: left;
         }
-        .btn-custom {
-            background-color:seagreen;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-            border-radius: 10px;
-        }
-        .btn-custom:hover {
-            background-color:yellow;
-        }
-        .error {
-            color: red;
+
+        .input-group label {
+            display: block;
             font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #1faeaa;
+            box-shadow: 0 0 5px rgba(31, 174, 170, 0.5);
+        }
+
+        /* Signup Button */
+        .btn {
+            width: 100%;
+            background: #1faeaa;
+            border: none;
+            padding: 12px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #0e8386;
+            transform: scale(1.03);
+        }
+
+        /* Links */
+        .signin-link {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #1faeaa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signin-link:hover {
+            text-decoration: underline;
         }
     </style>
-</head>
+</head>  
 <body>
     <div class="container">
-        <h1 class="title">Tourism Registration</h1>
-        <form id="registrationForm">
-            <div class="mb-3">
-                <label class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name">
-                <span id="name_error" class="error"></span>
+        <form action="register.php" method="POST">
+            <h2 class="title">Sign Up</h2>
+
+            <!-- Username -->
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Email:</label>
-                <div class="input-group">
-                    <input type="email" class="form-control" id="email" name="email">
-                    <button type="button" class="btn btn-custom" onclick="email_sent_otp()">Send OTP</button>
-                </div>
-                <span id="email_error" class="error"></span>
+
+            <!-- Email -->
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" id="email_otp" placeholder="Enter OTP">
-                <button type="button" class="btn btn-custom w-100 mt-2" onclick="email_verify_otp()">Verify OTP</button>
+
+         
+
+            <!-- Password -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Password:</label>
-                <input type="password" class="form-control" id="password" name="password">
-                <span id="password_error" class="error"></span>
-            </div>
-            <button type="button" class="btn btn-custom w-100" onclick="user_register()">Register</button>
-            <div class="mt-3 text-success" id="register_msg"></div>
+
+            <input type="submit" value="Sign Up" class="btn" name="signup">
+
+            <p>Already have an account? <a href="login.php" class="signin-link">Sign In</a></p>
         </form>
     </div>
-    
-    <script>
-        function email_sent_otp() {
-            $('#email_error').html('');
-            var email = $('#email').val().trim();
-            if (email === '') {
-                $('#email_error').html('Please enter an email ID');
-                return;
-            }
-            $('.btn-custom').text('Sending..').prop('disabled', true);
-            $.post('send_otp.php', { email: email, type: 'email' }, function(result) {
-                if (result.trim() === 'done') {
-                    alert('OTP sent successfully!');
-                } else {
-                    $('#email_error').html('Failed to send OTP. Try again.');
-                }
-                $('.btn-custom').text('Send OTP').prop('disabled', false);
-            });
-        }
-
-        function email_verify_otp() {
-            var email_otp = $('#email_otp').val().trim();
-            if (email_otp === '') {
-                alert('Please enter OTP');
-                return;
-            }
-            $.post('check_otp.php', { otp: email_otp, type: 'email' }, function(result) {
-                if (result.trim() === 'done') {
-                    alert('OTP verified!');
-                } else {
-                    alert('Invalid OTP. Try again.');
-                }
-            });
-        }
-
-        function user_register() {
-            $('#register_msg').html('');
-            var name = $('#name').val().trim();
-            var email = $('#email').val().trim();
-            var password = $('#password').val().trim();
-            if (name === '' || email === '' || password === '') {
-                alert('Please fill all fields');
-                return;
-            }
-            $.post('register_submit.php', { name: name, email: email, password: password }, function(result) {
-                if (result.trim() === 'insert') {
-                    $('#register_msg').html('Registration Successful!');
-                    setTimeout(() => window.location.href = 'login.php', 1000);
-                } else {
-                    alert('Registration failed. Try again.');
-                }
-            });
-        }
-    </script>
 </body>
 </html>

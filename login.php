@@ -1,125 +1,165 @@
+<?php
+session_start();
+include('connection.php'); // Ensure this is correct
 
+$msg = '';
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = md5($_POST['password']); // Hashing password
+
+    $sql = "SELECT * FROM user WHERE Email=? AND password=?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $_SESSION['USER_LOGIN']='yes';
+ 
+        $_SESSION['logedin'] = true;
+        $_SESSION['uid'] = $row['id'];
+        $_SESSION['name'] = $row['Name'];
+        $_SESSION['email'] = $row['Email'];
+        
+
+        echo "<script>window.location.href = 'index.php';</script>";
+        exit();
+    } else {
+        $msg = "Invalid email or password.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Login | MedStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('image/log4.jpg') no-repeat center center/cover;
-            font-family: Arial, sans-serif;
-            position: relative;
+            background: #E3F2FD; /* Light Blue */
         }
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        /* Container */
+        .container {
             width: 100%;
-            height: 100%;
-            /* background: rgba(0, 0, 0, 0.5); */
-        }
-        .wrapper {
-            background: transparent;
+            max-width: 350px;
+            background: white;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 1s ease-in-out;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 26px;
-            color: #333;
-        }
-        .input-box {
-            position: relative;
+
+        /* Title */
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00897B; /* Medical Green */
             margin-bottom: 15px;
         }
-        .input-box input {
-            width: 100%;
-            padding: 12px;
-            padding-left: 40px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-            transition: 0.3s;
+
+        /* Input Fields */
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
         }
-        .input-box input:focus {
-            border-color:whitesmoke;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-        }
-        .input-box i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: gray;
-        }
-        .btn {
-            background: #007BFF;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-        .signup-link {
-            margin-top: 15px;
-            color:white;
-        }
-        .signup-link a {
-            color: #007BFF;
-            text-decoration: none;
+
+        .input-group label {
+            font-size: 14px;
             font-weight: bold;
+            color: #333;
         }
-        .signup-link a:hover {
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            background: #00897B;
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #00796B;
+        }
+
+        /* Links */
+        .forgot-password,
+        .signup-link {
+            display: block;
+            font-size: 14px;
+            color: #00897B;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover,
+        .signup-link:hover {
             text-decoration: underline;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
+        <h2 class="title">Login</h2>
+
         <form method="POST">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input class="inputStyle" type="email"  name="email" placeholder="Email" required>
-                <i class='bx bxs-user'></i>
+            <!-- Email -->
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
             </div>
-            <div class="input-box">
-                <input class="inputStyle" type="password" name="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
+
+            <!-- Password -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
             </div>
-            <div style="display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 10px;">
-                <div class="remember-forget">
-                    <label><input type="checkbox"> Remember</label>
-                </div>
-                <div>
-                    <a href="#" style="color:white;">Forgot Password?</a>
-                </div>
-            </div>
-            <button type="submit"name="submit" class="btn">Login</button>
-            <div class="signup-link">
-                <p>Don't have an account? <a href="signUp.php">Sign up</a></p>
-            </div>
+
+            <input type="submit" value="Login" class="btn" name="login">
+
+            <a href="forgot_password.php" class="forgot-password">Forgot Password?</a>
+            <p>Don't have an account? <a href="signup.php" class="signup-link">Sign Up</a></p>
+
+            <p class="error-message"></p>
         </form>
     </div>
 </body>
