@@ -151,31 +151,27 @@ include 'connection.php';
                             </a>
                             <!-- Destination Dropdown -->
                             <div class="relative group">
-                                <a class="nav-link flex items-center">
+                                <a href="dooars.php" class="nav-link flex items-center">
                                     <img src="Image/tur.png" class="w-6 h-6 mr-2"> Destination
                                 </a>
-                                <div
-                                    class="absolute left-0 hidden bg-white shadow-lg rounded-lg w-48 group-hover:flex flex-col p-2">
-                                    <a href="dooars.php" class="block px-4 py-2 text-sm hover:bg-gray-100">DOOARS</a>
-                                    <a href="dooars.php" class="block px-4 py-2 text-sm hover:bg-gray-100">BHUTAN</a>
-                                    <a href="dooars.php"
-                                        class="block px-4 py-2 text-sm hover:bg-gray-100">DARJEELING</a>
-                                </div>
                             </div>
 
+
                             <!-- Packages Dropdown -->
-          <?php 
+                            <?php
                             $query = "SELECT place_id, p_name FROM place";
                             $result = $con->query($query);
                             ?>
 
                             <div class="relative group">
-                                <a href="packages.php" class="nav-link flex items-center">
+                                <a class="nav-link flex items-center">
                                     <img src="Image/pg.png" class="w-6 h-6 mr-2"> Packages
                                 </a>
-                                <div class="absolute left-0 hidden bg-white shadow-lg rounded-lg w-40 group-hover:flex flex-col p-2">
+                                <div
+                                    class="absolute left-0 hidden bg-white shadow-lg rounded-lg w-40 group-hover:flex flex-col p-2">
                                     <?php while ($row = $result->fetch_assoc()): ?>
-                                        <a href="book_package.php?place_id=<?= $row['place_id'] ?>" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                        <a href="book_package.php?place_id=<?= $row['place_id'] ?>"
+                                            class="block px-4 py-2 text-sm hover:bg-gray-100">
                                             <?= htmlspecialchars($row['p_name']) ?>
                                         </a>
                                     <?php endwhile; ?>
@@ -233,11 +229,11 @@ include 'connection.php';
             </nav>
 
             <script>
-                document.getElementById('menu-toggle').addEventListener('click', function() {
+                document.getElementById('menu-toggle').addEventListener('click', function () {
                     document.getElementById('mobile-menu').classList.toggle('hidden');
                 });
 
-                document.getElementById('dropdown-toggle').addEventListener('click', function() {
+                document.getElementById('dropdown-toggle').addEventListener('click', function () {
                     document.getElementById('dropdown-menu').classList.toggle('hidden');
                 });
             </script>

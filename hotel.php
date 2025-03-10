@@ -160,7 +160,7 @@
                                                 <p><strong>Contact:</strong> ' . $row["h_contact"] . '</p>
                                                 <p><strong>Price:</strong> Rs. ' . $row["h_price"] . '</p>
                                                 <p><strong>Rating:</strong> ⭐ ' . $row["h_rating"] . '</p>
-                                                <a href="package_details.php?id=' . $row["h_id"] . '" class="btn btn-primary">View Details</a>
+                                                <a href="hotel_details.php?id=' . $row["h_id"] . '" class="btn btn-primary">View Details</a>
                                             </div>
                                         </div>
                                     </div>';

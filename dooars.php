@@ -1,4 +1,4 @@
-<?php include 'include/navbar.php'; ?> 
+<?php include 'navbar.php'; ?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -247,7 +247,7 @@ body {
             Nestled in the foothills of the Eastern Himalayas, the **Himalayan Dooars** is a paradise of lush greenery, breathtaking landscapes, and diverse wildlife.
             Nestled in the foothills of the Eastern Himalayas, the **Himalayan Dooars** is a paradise of lush greenery, breathtaking landscapes, and diverse wildlife..
         </p>
-        <a href="book_package.php">
+        <a href="all_pk.php">
             <button class="btn">Explore All Packages</button>
         </a>
 

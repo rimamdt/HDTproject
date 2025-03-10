@@ -1,4 +1,4 @@
-<?php include 'include/navbar.php'; ?>
+<?php include 'navbar.php'; ?>
 <?php include 'connection.php'; // Include database connection ?>
 
 <!DOCTYPE html>

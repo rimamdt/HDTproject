@@ -528,31 +528,23 @@
                 <img src="Image/natu.jpg" alt="Jaldapara">
                 <div class="card-title">Jaldapara</div>
             </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Punakha Dzong">
-                <img src="Image/mountain.jpg" alt="Punakha Dzong">
-                <div class="card-title">Punakha Dzong</div>
-            </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Pasakha">
+            <div class="attraction-card" data-url="dooars.php?attraction=Jaldapara">
                 <img src="Image/pexels-ali-akdemir-2055469759-30037320.jpg" alt="Pasakha">
                 <div class="card-title">Pasakha</div>
             </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Tiger Nest">
-                <img src="Image/pexels-myersmc16-919278.jpg" alt="Tiger Nest">
-                <div class="card-title">Tiger Nest</div>
-            </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Jayanti">
+            <div class="attraction-card" data-url="dooars.php?attraction=Jaldapara">
                 <img src="Image/pexels-photo-3131634.jpeg" alt="Jayanti">
                 <div class="card-title">Jayanti</div>
             </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Gorumara">
+            <div class="attraction-card" data-url="dooars.php?attraction=Jaldapara">
                 <img src="Image/1.jpg" alt="Gorumara">
                 <div class="card-title">Gorumara</div>
             </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Lataguri">
+            <div class="attraction-card" data-url="dooars.php?attraction=Jaldapara">
                 <img src="Image/2.jpg" alt="Lataguri">
                 <div class="card-title">Lataguri</div>
             </div>
-            <div class="attraction-card" data-url="packages.html?attraction=Totopara">
+            <div class="attraction-card"data-url="dooars.php?attraction=Jaldapara">
                 <img src="Image/toto.jpg" alt="Totopara">
                 <div class="card-title">Totopara</div>
             </div>
