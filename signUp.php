@@ -24,14 +24,15 @@ include('connection.php'); // Ensure this is correct
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background:url('Image/sig.jpg');/* Light Blue */
+            background: url('Image/sig.jpg') no-repeat center center;
+            background-size: cover;
         }
 
         /* Container */
         .container {
             width: 100%;
             max-width: 400px;
-            background: white;
+            background: transparent;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);

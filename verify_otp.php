@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['verify'])) {
             die('Database error: ' . $stmt->error);
         }
     } else {
-        echo "<script>alert('Invalid OTP! Please try again.'); window.location.href='register.php';</script>";
+        echo "<script>alert('Invalid OTP! Please try again.'); window.location.href='signUP.php';</script>";
     }
 } else {
     header('Location: signup.php');
