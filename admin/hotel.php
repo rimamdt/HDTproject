@@ -22,11 +22,10 @@
                     <li><a href="Tourist.php" class="text-white"><i class="fa-solid fa-person"></i> Tourists</a></li>
                     <li><a href="user.php" class="text-white"><i class="fa-regular fa-user"></i> Users</a></li>
                     <li><a href="Hotel.php" class="text-white"><i class="fas fa-hotel"></i> Hotels</a></li>
-                    <li><a href="Vehicle.php" class="text-white"><i class="fa-solid fa-car"></i> Vehicles</a></li>
                     <li><a href="Place.php" class="text-white"><i class="fas fa-map-marker-alt"></i> Places</a></li>
                     <li><a href="Package.php" class="text-white"><i class="fa-solid fa-gift"></i> Packages</a></li>
                     <li><a href="Booking Details.php" class="text-white"><i class="fa-solid fa-calendar-check"></i> Booking Details</a></li>
-                    <li><a href="notifications.php" class="text-white"><i class="fas fa-bell"></i> Notifications</a></li>
+             
                     <li><a href="profile.php" class="text-white"><i class="fa-regular fa-user"></i> Profile</a></li>
                     <li><a href="settings.php" class="text-white"><i class="fas fa-cog"></i> Settings</a></li>
                 </ul>
@@ -82,28 +81,6 @@
 
     <!-- Content Section -->
     <div class="content">
-
-        <div class="stats row">
-            <div class="col-md-4">
-                <div class="stat p-3 bg-light text-center rounded shadow-sm">
-                    <h3>Total hotels</h3>
-                    <p class="fw-bold">150</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat p-3 bg-light text-center rounded shadow-sm">
-                    <h3>Total Bookings</h3>
-                    <p class="fw-bold">320</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat p-3 bg-light text-center rounded shadow-sm">
-                    <h3>Popular Hotels</h3>
-                    <p class="fw-bold">90</p>
-                </div>
-            </div>
-        </div>
-
         <div class="tourists-list mt-4">
             <h2>Hotels</h2>
             <table class="table table-bordered table-striped">

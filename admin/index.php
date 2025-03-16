@@ -71,7 +71,7 @@
                 <li><a class="dropdown-item" href="profile.php"><i class="fas fa-user-circle" style="color: #28a745;"></i> My Profile</a></li>
                 <li><a class="dropdown-item" href="settings.php"><i class="fas fa-cog" style="color: #28a745;"></i> Settings</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="index.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a class="dropdown-item text-danger" href="login.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
 
