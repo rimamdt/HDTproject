@@ -113,7 +113,7 @@
             <!-- Sidebar -->
             <aside class="col-lg-3 col-md-4">
                 <div class="sidebar">
-                    <h5>Search Destination</h5>
+                    <h5>Search Hotels</h5>
                     <input type="text" id="searchDestination" class="form-control" placeholder="Enter location"
                         onkeyup="showSuggestions(this.value)">
                     <div id="suggestions" class="suggestions"></div>
