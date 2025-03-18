@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
         $_SESSION['USER_LOGIN'] = 'yes';
 
         $_SESSION['logedin'] = true;
-        $_SESSION['uid'] = $row['id'];
+        $_SESSION['uid'] = $row['Id'];
         $_SESSION['name'] = $row['Name'];
         $_SESSION['email'] = $row['Email'];
 
