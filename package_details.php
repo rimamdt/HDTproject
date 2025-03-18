@@ -158,10 +158,11 @@ if ($p_id > 0) {
             <div class="col-md-8">
                 <div class="package-card">
                     <div class="package-image">
-                    <img src="image/<?= htmlspecialchars($package['image']) ?>" alt="Package Image">
+                        <img src="image/<?= htmlspecialchars($package['image']) ?>" alt="Package Image">
                     </div>
                     <div class="package-details">
-                        <h3><?= htmlspecialchars($package['p_name']) ?> - <?= htmlspecialchars($package['p_duration']) ?></h3>
+                        <h3><?= htmlspecialchars($package['p_name']) ?> -
+                            <?= htmlspecialchars($package['p_duration']) ?></h3>
                         <p><strong>Package ID:</strong> DR001</p>
                         <p><i class="fas fa-map-marker-alt"></i> Lataguri → Murti → Jaldapara → Buxa</p>
                         <p><strong>Package Type:</strong> Wildlife & Nature Tour</p>
@@ -169,29 +170,30 @@ if ($p_id > 0) {
                         <h5>Itinerary:</h5>
                         <div class="day-box">
                             <i class="fas fa-calendar-day day-icon"></i>
-                            <p><strong>Day 1:</strong> Arrival at Jaigaon, check-in at hotel.</p>
+                            <p><strong>Day 1:</strong> Arrival at your destination (Jaigaon for Bhutan, NJP/Bagdogra for
+                                Dooars & Darjeeling), check-in at hotel.</p>
                         </div>
                         <div class="day-box">
                             <i class="fas fa-calendar-day day-icon"></i>
-                            <p><strong>Day 2:</strong> Transfer to Thimphu, sightseeing at Buddha Point, Memorial
-                                Chorten.</p>
+                            <p><strong>Day 2:</strong> Explore local attractions—Thimphu sightseeing (Buddha Point,
+                                Memorial Chorten) for Bhutan, Jaldapara Wildlife Safari for Dooars, or Darjeeling City
+                                Tour (Tiger Hill, Batasia Loop).</p>
                         </div>
                         <div class="day-box">
                             <i class="fas fa-calendar-day day-icon"></i>
-                            <p><strong>Day 3:</strong> Thimphu city tour, visit Royal Palace, local markets.</p>
+                            <p><strong>Day 3:</strong> Continue with city exploration—Royal Palace & local markets in
+                                Bhutan, Murti & Gorumara in Dooars, or Tea Gardens & Ropeway in Darjeeling.</p>
                         </div>
                         <div class="day-box">
                             <i class="fas fa-calendar-day day-icon"></i>
-                            <p><strong>Day 1:</strong> Arrival at Jaigaon, check-in at hotel.</p>
+                            <p><strong>Day 4:</strong> Leisure activities—shopping & cultural experience in Bhutan,
+                                riverbank relaxation & nature trails in Dooars, or Toy Train ride in Darjeeling.</p>
                         </div>
                         <div class="day-box">
                             <i class="fas fa-calendar-day day-icon"></i>
-                            <p><strong>Day 1:</strong> Arrival at Jaigaon, check-in at hotel.</p>
+                            <p><strong>Day 5:</strong> Departure after breakfast.</p>
                         </div>
-                        <div class="day-box">
-                            <i class="fas fa-calendar-day day-icon"></i>
-                            <p><strong>Day 1:</strong> Arrival at Jaigaon, check-in at hotel.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -212,7 +214,7 @@ if ($p_id > 0) {
                         <div class="mb-3">
                             <textarea class="form-control" placeholder="Your Message"></textarea>
                         </div>
-                        <a href="booking.php" class="btn btn-book">package request</a>
+                        <a href="contact.php" class="btn btn-book">package request</a>
                     </form>
                 </div>
                 <!-- Related Packages -->

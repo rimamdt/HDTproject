@@ -102,6 +102,10 @@
                             <label class="form-label">Travel Date</label>
                             <input type="date" class="form-control" required>
                         </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="tourGuideCheckbox">
+                            <label class="form-check-label" for="tourGuideCheckbox">Do you need a Tour Guide?</label>
+                        </div>
                         <button type="submit" class="btn btn-primary w-100 mt-3">Confirm Booking</button>
                     </form>
                     <div id="typingEffect"></div>
