@@ -1,9 +1,6 @@
 <?php
 session_start();
-unset($_SESSION['USER_LOGIN']);
-unset($_SESSION['uid']);
-unset($_SESSION['email']);
-
-header('location:login.php');
-die();
+session_destroy(); // Destroy all sessions
+header("Location: login.php"); // Redirect to login page
+exit();
 ?>

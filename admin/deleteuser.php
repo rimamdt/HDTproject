@@ -1,16 +1,23 @@
-<?php 
+<?php
+$conn = new mysqli("localhost", "root", "", "hdtproject");
 
-$conn = new mysqli( "localhos","root", ""  ,"hdtproject" );
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-if($conn->connect_error){
-    die("connection failed: ".$con->connect_error);
+if (isset($_POST['id'])) {
+    $user_id = intval($_POST['id']);
+    $stmt = $conn->prepare("DELETE FROM user WHERE ID = ?");
+    $stmt->bind_param("i", $user_id);
+    
+    if ($stmt->execute()) {
+        echo "User deleted successfully";
+    } else {
+        echo "Error deleting user: " . $conn->error;
+    }
+
+    $stmt->close();
 }
-if(
-    isset($_POST['id'])
-)
-{
-    $user_id=intval($_POST['id']);
-    $conn->query("DELETE FROM user WHERE ID= $user_id");
-}
+
 $conn->close();
 ?>
