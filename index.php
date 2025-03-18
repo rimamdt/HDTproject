@@ -388,7 +388,7 @@
                         <p class="details">' . $row["p_duration"] . '</p>
                         <p class="details">' . $row["p_description"] . '</p>
                         <p class="price">RS ' . $row["p_price"] . '</p>
-                        <a href="package_details.php?id=' . $row["p_id"] . '" class="view-more">View More</a>
+                        <a href="package_details.php?p_id=' . $row["p_id"] . '" class="view-more">View More</a>
                       </div>';
             }
         } else {

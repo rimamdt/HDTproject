@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-md-3 room-right">
                     <h5>Rs. 10000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
             <div class="rom-btm">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-md-3 room-right">
                     <h5>Rs. 12000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
             <div class="rom-btm">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-md-3 room-right">
                     <h5>Rs. 10000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
             <div class="rom-btm">
@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-md-3 room-right">
                     <h5>Rs. 10000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
             <div class="rom-btm">
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-md-3 room-right">
                     <h5>Rs. 10000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
             <div class="rom-btm">
@@ -150,7 +150,7 @@
                 </div>  
                 <div class="col-md-3 room-right">
                     <h5>Rs. 9000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
             <div class="rom-btm">
@@ -164,7 +164,7 @@
                 </div>
                 <div class="col-md-3 room-right">
                     <h5>Rs. 14000</h5>
-                    <a href="package_details.php" class="view">Details</a>
+                    <a href="dooars.php" class="view">Details</a>
                 </div>
             </div>
         </div>
