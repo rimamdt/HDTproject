@@ -24,7 +24,6 @@
                     <li><a href="Place.php" class="text-white"><i class="fas fa-map-marker-alt"></i> Places</a></li>
                     <li><a href="Package.php" class="text-white"><i class="fa-solid fa-gift"></i> Packages</a></li>
                     <li><a href="Booking Details.php" class="text-white"><i class="fa-solid fa-calendar-check"></i> Booking Details</a></li>
-                    <li><a href="notifications.php" class="text-white"><i class="fas fa-bell"></i> Notifications</a></li>
                     <li><a href="profile.php" class="text-white"><i class="fa-regular fa-user"></i> Profile</a></li>
                     <li><a href="settings.php" class="text-white"><i class="fas fa-cog"></i> Settings</a></li>
                 </ul>

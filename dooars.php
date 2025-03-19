@@ -260,16 +260,16 @@ body {
             <button class="nav-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
 
             <div class="carousel">
-                <a href="dooars_packages.php"><div class="card"><img src="image/top1.jpg"><span class="location">Mahananda</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/top2.jpg"><span class="location">Chapramari</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/toto.jpg"><span class="location">Suntalekhola</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/top3.jpg"><span class="location">Buxa</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/riv.jpg"><span class="location">Pasakha</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/top1.jpg"><span class="location">Mahananda</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/top2.jpg"><span class="location">Chapramari</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/toto.jpg"><span class="location">Suntalekhola</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/top3.jpg"><span class="location">Buxa</span></div></a>
-                <a href="dooars_packages.php"><div class="card"><img src="image/riv.jpg"><span class="location">Pasakha</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/top1.jpg"><span class="location">Mahananda</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/top2.jpg"><span class="location">Chapramari</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/toto.jpg"><span class="location">Suntalekhola</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/top3.jpg"><span class="location">Buxa</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/riv.jpg"><span class="location">Pasakha</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/top1.jpg"><span class="location">Mahananda</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/top2.jpg"><span class="location">Chapramari</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/toto.jpg"><span class="location">Suntalekhola</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/top3.jpg"><span class="location">Buxa</span></div></a>
+                <a href="index.php"><div class="card"><img src="image/riv.jpg"><span class="location">Pasakha</span></div></a>
             </div>
 
             <button class="nav-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>

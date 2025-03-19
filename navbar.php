@@ -27,7 +27,7 @@ if (isset($_SESSION['uid'])) {
     <title>HDT - Navbar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-  
+
 </head>
 
 <body class="bg-gray-100">
@@ -51,31 +51,26 @@ if (isset($_SESSION['uid'])) {
                             </a>
                             <!-- Destination Dropdown -->
                             <div class="relative group">
-                                <a class="nav-link flex items-center">
+                                <a href="dooars.php" class="nav-link flex items-center">
                                     <img src="Image/tur.png" class="w-6 h-6 mr-2"> Destination
                                 </a>
-                                <div
-                                    class="absolute left-0 hidden bg-white shadow-lg rounded-lg w-48 group-hover:flex flex-col p-2">
-                                    <a href="dooars.php" class="block px-4 py-2 text-sm hover:bg-gray-100">DOOARS</a>
-                                    <a href="dooars.php" class="block px-4 py-2 text-sm hover:bg-gray-100">BHUTAN</a>
-                                    <a href="dooars.php"
-                                        class="block px-4 py-2 text-sm hover:bg-gray-100">DARJEELING</a>
-                                </div>
                             </div>
 
                             <!-- Packages Dropdown -->
-          <?php 
+                            <?php
                             $query = "SELECT place_id, p_name FROM place";
                             $result = $con->query($query);
                             ?>
 
                             <div class="relative group">
-                                <a href="packages.php" class="nav-link flex items-center">
+                                <a  class="nav-link flex items-center">
                                     <img src="Image/pg.png" class="w-6 h-6 mr-2"> Packages
                                 </a>
-                                <div class="absolute left-0 hidden bg-white shadow-lg rounded-lg w-40 group-hover:flex flex-col p-2">
+                                <div
+                                    class="absolute left-0 hidden bg-white shadow-lg rounded-lg w-40 group-hover:flex flex-col p-2">
                                     <?php while ($row = $result->fetch_assoc()): ?>
-                                        <a href="book_package.php?place_id=<?= $row['place_id'] ?>" class="block px-4 py-2 text-sm hover:bg-gray-100">
+                                        <a href="book_package.php?place_id=<?= $row['place_id'] ?>"
+                                            class="block px-4 py-2 text-sm hover:bg-gray-100">
                                             <?= htmlspecialchars($row['p_name']) ?>
                                         </a>
                                     <?php endwhile; ?>
@@ -97,17 +92,19 @@ if (isset($_SESSION['uid'])) {
                             <a href="contact.php" class="nav-link flex items-center">
                                 <img src="Image/cont.png" class="w-6 h-6 mr-2"> Contact Us
                             </a>
-                          
+
                             <?php if (isset($_SESSION['USER_LOGIN'])): ?>
                                 <!-- User Profile Dropdown -->
                                 <div class="relative group">
                                     <button class="flex items-center focus:outline-none">
                                         <img src="Image/default.jpg" class="w-8 h-8 rounded-full mr-2">
-                                        
+
                                     </button>
-                                    <div class="absolute right-0 hidden bg-white shadow-lg rounded-lg w-40 group-hover:flex flex-col p-2">
-                                        <a href="profile.php" class="block px-4 py-2 text-sm hover:bg-gray-100">My Profile</a>
+                                    <div
+                                        class="absolute right-0 hidden bg-white shadow-lg rounded-lg w-40 group-hover:flex flex-col p-2">
                                         <a href="logout.php" class="block px-4 py-2 text-sm hover:bg-gray-100">Logout</a>
+                                        <a href="tourhis.php" class="block px-4 py-2 text-sm hover:bg-gray-100">Tour
+                                            History</a>
                                     </div>
                                 </div>
                             <?php else: ?>
@@ -129,7 +126,7 @@ if (isset($_SESSION['uid'])) {
                         </div>
                     </div>
                 </div>
-                <div id="mobile-menu" class="hidden md:hidden bg-white p-4 mobileView">
+                <!-- <div id="mobile-menu" class="hidden md:hidden bg-white p-4 mobileView">
                     <a href="index.php" class="block py-2">Home</a>
                     <a href="tours.php" class="block py-2">Tours</a>
                     <div class="relative">
@@ -144,15 +141,15 @@ if (isset($_SESSION['uid'])) {
                     <a href="services.php" class="block py-2">Services</a>
                     <a href="contact.php" class="block py-2">Contact Us</a>
                     <button class="btn btn-warning ms-3" onclick="window.location.href='logout.php'">Logout</button>
-                </div>
+                </div> -->
             </nav>
 
             <script>
-                document.getElementById('menu-toggle').addEventListener('click', function() {
+                document.getElementById('menu-toggle').addEventListener('click', function () {
                     document.getElementById('mobile-menu').classList.toggle('hidden');
                 });
 
-                document.getElementById('dropdown-toggle').addEventListener('click', function() {
+                document.getElementById('dropdown-toggle').addEventListener('click', function () {
                     document.getElementById('dropdown-menu').classList.toggle('hidden');
                 });
             </script>
@@ -163,118 +160,118 @@ if (isset($_SESSION['uid'])) {
 </html>
 
 <style>
-        /* Navigation Link Styling */
-        .nav-link {
-            position: relative;
-            font-weight: 600;
-            transition: color 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 1.1rem;
+    /* Navigation Link Styling */
+    .nav-link {
+        position: relative;
+        font-weight: 600;
+        transition: color 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.1rem;
+    }
+
+    .nav-link:hover {
+        color: #FF9800;
+    }
+
+    /* Dropdown Styling */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 180px;
+        z-index: 10;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+        display: block;
+    }
+
+    .iconStyle {
+        margin-left: 20px;
+    }
+
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .logoText {
+        text-decoration: none;
+        font-size: 28px;
+        font-weight: 1000;
+        color: #660000;
+        /* Golden color */
+        font-family: sans-serif;
+        /* Stylish font */
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        animation: fadeIn 1.5s ease-in-out;
+        margin: 1px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
         }
 
-        .nav-link:hover {
-            color: #FF9800;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        /* Dropdown Styling */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            min-width: 180px;
-            z-index: 10;
-        }
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+    }
 
-        .dropdown:hover .dropdown-menu,
-        .dropdown:focus-within .dropdown-menu {
-            display: block;
-        }
+    .nav-links a:hover {
+        text-decoration: none;
+        color: #f39c12;
+    }
 
-        .iconStyle {
-            margin-left: 20px;
-        }
+    .mobileView a {
+        text-decoration: none;
+        color: blue;
+    }
 
-        .logoContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-        }
+    .mobileView a:hover {
+        text-decoration: none;
+        color: #f39c12;
+    }
 
-        .logoText {
-            text-decoration: none;
-            font-size: 28px;
-            font-weight: 1000;
-            color: #660000;
-            /* Golden color */
-            font-family: sans-serif;
-            /* Stylish font */
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: fadeIn 1.5s ease-in-out;
-            margin: 1px;
-        }
+    .packageBtn {
+        color: blue;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
+    .packageBtn:hover {
+        color: #f39c12;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .packagePop {
+        margin: 2px
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: black;
-            font-size: 18px;
-            font-weight: 500;
-            transition: color 0.3s ease-in-out;
-        }
+    .packageDetails {
+        text-decoration: none;
+    }
 
-        .nav-links a:hover {
-            text-decoration: none;
-            color: #f39c12;
-        }
-
-        .mobileView a {
-            text-decoration: none;
-            color: blue;
-        }
-
-        .mobileView a:hover {
-            text-decoration: none;
-            color: #f39c12;
-        }
-
-        .packageBtn {
-            color: blue;
-        }
-
-        .packageBtn:hover {
-            color: #f39c12;
-        }
-
-        .packagePop {
-            margin: 2px
-        }
-
-        .packageDetails {
-            text-decoration: none;
-        }
-
-        .packageDetailsText {
-            color: black;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease-in-out;
-        }
-    </style>
+    .packageDetailsText {
+        color: black;
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+    }
+</style>
